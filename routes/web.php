@@ -22,5 +22,5 @@ Route::get("/phpinfo", function () {
 });
 
 Route::get("/appinfo", function () {
-    return app()->version();
+    return "App Version : " . app()->version();
 });

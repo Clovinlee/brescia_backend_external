@@ -139,6 +139,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
@@ -181,6 +182,7 @@ return [
     /*
     |--------------------------------------------------------------------------
     | Class Aliases
+    
     |--------------------------------------------------------------------------
     |
     | This array of class aliases will be registered when this application
@@ -190,7 +192,8 @@ return [
     */
 
     'aliases' => [
-
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,

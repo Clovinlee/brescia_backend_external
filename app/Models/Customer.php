@@ -1,8 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * @property int $nomor
@@ -55,8 +57,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $nomoraccount
  * @property string $kodeaccount
  */
-class Customer extends Model
+
+
+
+class Customer extends Authenticatable implements JWTSubject
 {
+    use Notifiable;
     /**
      * The table associated with the model.
      * php artisan krlove:generate:model User --table-name=user
@@ -77,6 +83,28 @@ class Customer extends Model
      * @var bool
      */
     public $incrementing = false;
+
+    public $timestamps = false;
+
+    /**
+     * Get the identifier that will be stored in the subject claim of the JWT.
+     *
+     * @return mixed
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 
     /**
      * @var array
