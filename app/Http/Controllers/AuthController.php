@@ -20,8 +20,8 @@ class AuthController extends Controller
         if (!$token = $this->apiguard()->attempt(["email" => $email, "password" => $password])) {
             return makeJson(403, "Error, email atau password salah");
         }
-
-        return makeJson(200, "Berhasil Login!", ["token" => $token]);
+        $nama = $this->apiguard()->user()->nama;
+        return makeJson(200, "Berhasil Login!", ["token" => $token, "nama" => $nama]);
     }
 
     public function logout(Request $r)
@@ -30,8 +30,9 @@ class AuthController extends Controller
         return makeJson(200, "Berhasil Logout");
     }
 
-    public function getRemember(Request $r)
+    public function getAuthUser(Request $r)
     {
-        return makeJson(200, "Berhasil mendapatkan remember me", $this->apiguard()->user());
+        $user = $this->apiguard()->user();
+        return makeJson(200, "Berhasil mendapatkan user token", $user);
     }
 }

@@ -14,9 +14,13 @@ Route::post("/login", [AuthController::class, "login"]);
 Route::group(["middleware" => ["auth:api"]], function () {
 
     Route::get("/customer", [CustomerController::class, "getCustomer"]);
+    Route::post("/authme", [AuthController::class, "getAuthUser"]);
 
     Route::get("/barang", [BarangController::class, "getBarang"]);
 
-    Route::get("/remember", [AuthController::class, "getRemember"]);
     Route::post("/logout", [AuthController::class, "logout"]);
 });
+
+Route::get("/unauthorized", function () {
+    return makeJson(401, "Unauthorized access");
+})->name("login");
