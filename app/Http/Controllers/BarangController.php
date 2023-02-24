@@ -13,19 +13,20 @@ class BarangController extends Controller
         $nomor = $r->nomor;
         $kode = $r->kode;
         $nama = $r->nama;
+        $aktif = $r->aktif ?? 1;
 
-        $b = Barang::all();
 
-        if ($nama != null) {
-            $b = Barang::where("nama", "like", "%" . $nama . "%")->get();
-        } else {
-            if ($nomor != null) {
-                $b = $b->where("nomor", "=", $nomor);
-            }
-            if ($kode != null) {
-                $b = $b->where("kode", "=", $kode);
-            }
+        $b = Barang::with(["bentuk", "grade", "jenis", "kategori", "motif", "satuan", "surface", "tebal", "tipe", "ukuran"]);
+
+        $b = $b->where("aktif", "=", $aktif);
+        $b = $b->where("nama", "like", "%" . $nama . "%");
+
+        if ($nomor != null) {
+            $b = $b->where("nomor", "=", $nomor);
         }
-        return makeJson(200, "Sukses dapatkan barang", $b->values());
+        if ($kode != null) {
+            $b = $b->where("kode", "=", $kode);
+        }
+        return makeJson(200, "Sukses dapatkan barang", $b->get());
     }
 }

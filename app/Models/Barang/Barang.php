@@ -125,5 +125,10 @@ class Barang extends Model
     /**
      * @var array
      */
-    protected $fillable = ['kode', 'nama', 'namajual', 'custom', 'barangtambang', 'barangimport', 'nomorkategori', 'kodekategori', 'nomortipe', 'kodetipe', 'nomorbentuk', 'kodebentuk', 'nomorukuran', 'kodeukuran', 'nomortebal', 'kodetebal', 'nomorgrade', 'kodegrade', 'nomormotif', 'kodemotif', 'nomorsurface', 'kodesurface', 'nomorjenis', 'kodejenis', 'nomorsatuan', 'kodesatuan', 'status', 'printed', 'pembuat', 'keterangan', 'aktif', 'minimumstok', 'hargadasaridr', 'hargajualidr', 'hpp', 'panjang', 'lebar', 'tebal', 'namamanual', 'nomorlama', 'kodelama', 'proses'];
+    protected $hidden = ["nomorbentuk", "kodebentuk", "nomorgrade", "kodegrade", "nomorjenis", "kodejenis", "nomorkategori", "kodekategori", "nomormotif", "kodemotif", "nomorsatuan", "kodesatuan", "nomorsurface", "kodesurface", "nomortebal", "kodetebal", "nomortipe", "kodetipe"];
+
+    /**
+     * @var array
+     */
+    // protected $fillable = ['kode', 'nama', 'namajual', 'custom', 'barangtambang', 'barangimport', 'nomorkategori', 'kodekategori', 'nomortipe', 'kodetipe', 'nomorbentuk', 'kodebentuk', 'nomorukuran', 'kodeukuran', 'nomortebal', 'kodetebal', 'nomorgrade', 'kodegrade', 'nomormotif', 'kodemotif', 'nomorsurface', 'kodesurface', 'nomorjenis', 'kodejenis', 'nomorsatuan', 'kodesatuan', 'status', 'printed', 'pembuat', 'keterangan', 'aktif', 'minimumstok', 'hargadasaridr', 'hargajualidr', 'hpp', 'panjang', 'lebar', 'tebal', 'namamanual', 'nomorlama', 'kodelama', 'proses'];
 }
